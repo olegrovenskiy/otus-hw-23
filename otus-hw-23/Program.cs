@@ -1,6 +1,8 @@
 ﻿// See https://aka.ms/new-console-template for more information
 Console.WriteLine("Hello, World!");
 
+var dir = "C:\\Users\\o.rovenskiy\\source\\repos\\otus-hw-23\\otus-hw-23\\Files";
+
 var (file1, file2, file3) = ("file1.txt", "file2.txt", "file3.txt");
 
 CreateFiles();
@@ -22,9 +24,11 @@ Task.WaitAll(task1, task2, task3);
 
 Console.WriteLine("Finished");
 
+Console.WriteLine("Find File");
 
+ReadFile(dir);
 
-
+Console.WriteLine("End Find File");
 
 
 
@@ -47,6 +51,41 @@ void CreateFiles()
     File.WriteAllText(file2, file2Content);
     File.WriteAllText(file3, file3Content);
 }
+
+
+// Написать функцию, принимающую в качестве аргумента путь к папке. Из этой папки параллельно прочитать все файлы и вычислить количество пробелов в них.
+
+void ReadFile (string path)
+{
+    Console.WriteLine("Hi");
+    string[] files = Directory.GetFiles(path);
+    var i = 0;
+    Task[] tasks = new Task[files.Length];
+    Console.WriteLine("Hi  " + files.Length);
+
+
+    foreach (string s in files)
+    {
+      //  CountSpacesInFile(s);
+        Console.WriteLine(s);
+        tasks[i] = Task.Run(() =>
+        {
+            CountSpacesInFile(s);
+        });
+        i++;
+    }
+    Task.WaitAll(tasks);
+
+}
+
+
+
+
+
+
+
+
+
 
 
 Console.ReadKey();
