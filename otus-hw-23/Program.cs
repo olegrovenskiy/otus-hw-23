@@ -49,7 +49,6 @@ void CountSpacesInFile(string s)
 
 void CreateFiles()
 {
-
     var file1Content = "hello world";
     var file2Content = "hello great world";
     var file3Content = "hello funny great world";
@@ -68,8 +67,6 @@ void ReadFile (string path)
     string[] files = Directory.GetFiles(path);
     var i = 0;
     Task[] tasks = new Task[files.Length];
-    Console.WriteLine("Hi  " + files.Length);
-
 
     foreach (string s in files)
     {
