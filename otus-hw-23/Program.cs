@@ -1,4 +1,6 @@
 ﻿// See https://aka.ms/new-console-template for more information
+using System.Diagnostics;
+
 Console.WriteLine("Hello, World!");
 
 var dir = "C:\\Users\\o.rovenskiy\\source\\repos\\otus-hw-23\\otus-hw-23\\Files";
@@ -26,7 +28,12 @@ Console.WriteLine("Finished");
 
 Console.WriteLine("Find File");
 
+Stopwatch stopwatch = new Stopwatch();
+stopwatch.Start();
 ReadFile(dir);
+stopwatch.Stop();
+Console.WriteLine("Время выполнения  " + stopwatch.ElapsedMilliseconds + "  мсек");
+
 
 Console.WriteLine("End Find File");
 
